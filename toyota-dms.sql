@@ -1,0 +1,75 @@
+CREATE DATABASE IF NOT EXISTS toyota_dms;
+USE toyota_dms;
+
+CREATE TABLE Cars (
+    VIN BIGINT NOT NULL,
+    Make VARCHAR(50) NOT NULL,
+    Model VARCHAR(50) NOT NULL,
+    Variant VARCHAR(50) NOT NULL,
+    Brand_New BOOLEAN NOT NULL DEFAULT 0,
+    Sold BOOLEAN NOT NULL DEFAULT 0,
+    Price DECIMAL(10,2) NOT NULL,
+    Color VARCHAR(30) NOT NULL,
+    Kilometers_Driven INT NULL,
+    Year_of_Manufacture INT NULL,
+    PRIMARY KEY (VIN)
+);
+
+CREATE TABLE Car_Specifications (
+    VIN BIGINT NOT NULL,
+    Engine_Type VARCHAR(20) NOT NULL,
+    Engine_CC VARCHAR(20) NOT NULL,
+    Body_Type VARCHAR(30) NOT NULL,
+    PRIMARY KEY (VIN),
+    FOREIGN KEY (VIN) REFERENCES Cars(VIN)
+);
+
+CREATE TABLE Car_Features (
+    VIN BIGINT NOT NULL,
+    Power_Windows BOOLEAN NOT NULL,
+    Power_Steering BOOLEAN NOT NULL,
+    Alloy_Wheels BOOLEAN NOT NULL,
+    Imported BOOLEAN NOT NULL,
+    PRIMARY KEY (VIN),
+    FOREIGN KEY (VIN) REFERENCES Cars(VIN)
+);
+
+CREATE TABLE Customers (
+    CNIC BIGINT NOT NULL,
+    Name VARCHAR(35) NOT NULL,
+    Phone_Number VARCHAR(20) NOT NULL,
+    PRIMARY KEY (CNIC)
+);
+
+CREATE TABLE Employees (
+    Employee_ID INT NOT NULL,
+    Name VARCHAR(35) NOT NULL,
+    Department VARCHAR(25) NOT NULL,
+    Salary DECIMAL(10,2) NOT NULL,
+    Phone_Number VARCHAR(20) NOT NULL,
+    PRIMARY KEY (Employee_ID)
+);
+
+CREATE TABLE Sales (
+    VIN BIGINT NOT NULL,
+    CNIC BIGINT NOT NULL,
+    Employee_ID INT NOT NULL,
+    Amount_Paid DECIMAL(10,2) NOT NULL,
+    Date_Time DATETIME NOT NULL,
+    PRIMARY KEY (VIN),
+    FOREIGN KEY (VIN) REFERENCES Cars(VIN),
+    FOREIGN KEY (CNIC) REFERENCES Customers(CNIC),
+    FOREIGN KEY (Employee_ID) REFERENCES Employees(Employee_ID)
+);
+
+CREATE TABLE Maintenance (
+    Service_ID INT NOT NULL,
+    VIN BIGINT NOT NULL,
+    CNIC BIGINT NOT NULL,
+    Employee_ID INT NOT NULL,
+    Service_Type VARCHAR(50) NOT NULL,
+    Amount DECIMAL(10,2) NOT NULL,
+    Date_Time DATETIME NOT NULL,
+    PRIMARY KEY (Service_ID),
+    FOREIGN KEY (Employee_ID) REFERENCES Employees(Employee_ID)
+);
