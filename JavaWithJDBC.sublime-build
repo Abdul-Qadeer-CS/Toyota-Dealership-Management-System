@@ -1,0 +1,5 @@
+{
+    "shell_cmd": "cd \"C:\\Users\\Dell\\Desktop\\Semester 2\\DBMS (Theory)\\Project\\Project\\Toyota-Dealership-Management-System\" && javac -cp \".;lib/mysql-connector-j-9.6.0.jar\" src/*.java -d bin && java -cp \"bin;lib/mysql-connector-j-9.6.0.jar\" Main",
+    "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+    "selector": "source.java"
+}

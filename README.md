@@ -1,4 +1,4 @@
-# Toyota-Dealership-Management-System
+﻿# Toyota-Dealership-Management-System
 
 
 
@@ -118,29 +118,6 @@ java -cp ".;lib/mysql-connector-j-9.6.0.jar" src/Main
 
 \## Demo Video Link
 
-
-
-\---------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+https://drive.google.com/file/d/1avcUmRI9BZd3CmOUYsO57ZFxveQo1JS7/view?usp=drive_link
 
 
